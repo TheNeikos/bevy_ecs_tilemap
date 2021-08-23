@@ -256,7 +256,7 @@ pub fn process_loaded_tile_maps(
 pub struct TiledMapPlugin;
 
 impl Plugin for TiledMapPlugin {
-    fn build(&self, app: &mut AppBuilder) {
+    fn build(&self, app: &mut App) {
         app
             .add_asset::<TiledMap>()
             .add_asset_loader(TiledLoader)

@@ -130,7 +130,7 @@ impl Default for TilemapMeshType {
 pub struct TilemapStage;
 
 impl Plugin for TilemapPlugin {
-    fn build(&self, app: &mut AppBuilder) {
+    fn build(&self, app: &mut App) {
         app.add_stage_before(CoreStage::PostUpdate, TilemapStage, SystemStage::parallel())
             .add_system_to_stage(TilemapStage, update_chunk_time.system())
             .add_system_to_stage(
@@ -152,8 +152,7 @@ impl Plugin for TilemapPlugin {
                     .after("hash_update_for_tiles")
                     .after("update_chunk_visibility"),
             );
-        let world = app.world_mut();
-        add_tile_map_graph(world);
+        add_tile_map_graph(&mut app.world);
     }
 }
 
